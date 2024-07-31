@@ -1,0 +1,3 @@
+<필요 패키지 목록>
+Flask
+requests
