@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>시즌 {{ season_id }} 결과</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>시즌 {{ season_id }} 최다빈도 포켓몬</h1>
+    <table>
+        <tr>
+            <th>순위</th>
+            <th>ID</th>
+            <th>이름</th>
+            <th>타입</th>
+        </tr>
+        {% for pokemon in pokemons[:10] %}
+        <tr>
+            <td>{{ pokemon.ranking }}</td>
+            <td>{{ pokemon.id }}</td>
+            <td>{{ pokemon.name }}</td>
+            <td>{{ pokemon.type_kor }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('main.search') }}">다시 검색하기</a>
+    <br>
+    <a href="{{ url_for('main.home') }}">홈으로 돌아가기</a>
+</body>
+</html>

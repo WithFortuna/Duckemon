@@ -1,0 +1,26 @@
+<api>
+
+1. 시즌정보
+2. 시즌의 트레이너 순위
+3. 순위 커트라인
+4. op포켓몬 순위
+5. 포켓몬 상세 정보
+<용어>
+seasons = season 집합
+season = {싱글매치 1개, 더블 매치 1개} // 각각은 season.keys()로 분류
+match = {싱글 또는 더블} //양자택일
+
+
+
+<배운점>
+
+- Python에서 JSON 파일을 읽고 쓰는 데 사용하는 json 모듈을 사용하면, 
+JSON 객체-> dict로, JSON 배열 -> list로 변환됩니다.
+
+-  Flask와 스프링의 유사점
+   Flask 어플리케이션 ~ Spring앱컨텍스트  : 서버 실행(스프링같은 경우는 톰캣서버)
+   routes.py 파일 ~ Controller 클래스 : url과 html 맵핑
+   템플릿 엔진: Jinja2 ~ Thymeleaf : 자바(파이썬)의 객체를 html에 전달
+
+  
+

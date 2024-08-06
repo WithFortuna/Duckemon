@@ -80,6 +80,9 @@ def get_trainer_rank(match, index):
 # get_pokemon_rank - 포켓몬 순위 정보 가져오기
 #
 # match -> 시즌 정보로부터 가져온 매치 정보
+# 반환값 예시:  리스트
+#  [ {'id': 1, 'form': 0} {'id:2, 'form':0} {},... {} ]
+# .
 
 def get_pokemon_rank(match):
     _URL = URL_POKEMON.format(
