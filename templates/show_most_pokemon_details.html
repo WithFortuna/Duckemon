@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 포켓몬: {{ pokemon_name }} -> 상세 정보: {{ detail_name }} </title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ pokemon_name }} 포켓몬 -{{ detail_name }} 상세 정보</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>ID</th>
+                <th>이름</th>
+
+                {% if '포켓몬' in detail_name %}
+                <th>타입</th>
+                {% else %}
+                <th>빈도</th>
+                {% endif %}
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in details %}
+            <tr>
+                <td>{{ pokemon.index }}</td>
+                <td>{{ pokemon.id }}</td>
+                <td>{{ pokemon.name }}</td>
+                {% if '포켓몬' in detail_name %}
+                <td>{{ pokemon.type_kor }}</td>
+
+                {% else %}
+                <td>{{ pokemon.val }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('main.most_pokemon') }}">다른 포켓몬 검색하기</a>
+
+</body>
+</html>
