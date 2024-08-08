@@ -35,7 +35,7 @@ from functools import reduce
 
 
 
-# 해당 시즌의 기본 정보를 보여주는 함수입니다.
+#1 해당 시즌의 기본 정보를 보여주는 함수입니다.
 def display_season_data(num):
 
     season = get_seasons()[str(num)]
@@ -49,13 +49,13 @@ def display_season_data(num):
         print("참여자 수:", match['cnt'])
         print("플레이어 순위 집계 기준:", datetime.fromtimestamp(match['ts1']).strftime("%Y년 %m월 %d일 %H시 %M분 %S초"))
         print("포켓몬 순위 집계 기준:", datetime.fromtimestamp(match['ts2']).strftime("%Y년 %m월 %d일 %H시 %M분 %S초"))
-
-# 원하는 시즌의 싱글 또는 더블배틀 트레이너 순위를 원하는 만큼 보여주는 함수입니다.
+    return season
+#2 원하는 시즌의 싱글 또는 더블배틀 트레이너 순위를 원하는 만큼 보여주는 함수입니다.
 def display_trainer_data(season, single, start, end):
     the_season = get_seasons()[str(season)]
 
     battle_prefix = '싱글' if single else '더블'
-    for rule_id in sorted(the_season.keys()):
+    for rule_id in sorted(the_season.keys()): #rule_id == match_id
         rule = '싱글' if rule_id.endswith('1') else '더블'
         if battle_prefix is rule:
 
@@ -71,7 +71,7 @@ def display_trainer_data(season, single, start, end):
                            .set_index('순위'))
             display(dataframe)
 
-# 원하는 시즌의 특정 레이팅 점수 커트라인 등수를 보여주는 함수입니다.
+#3 원하는 시즌의 특정 레이팅 점수 커트라인 등수를 보여주는 함수입니다.
 def display_rating_cutline(season, single, rating):
     the_season = get_seasons()[str(season)]
 
@@ -102,37 +102,39 @@ def display_rating_cutline(season, single, rating):
                            .set_index('순위'))
             display(dataframe)
 
-# 원하는 시즌의 싱글 또는 더블배틀 포켓몬 빈도 순위를 원하는 만큼 보여주는 함수입니다.
+#4 원하는 시즌의 싱글 또는 더블배틀 포켓몬 빈도 순위를 원하는 만큼 보여주는 함수입니다.
 def display_pokemon_usage(season, single, start, end):
     the_season = get_seasons()[str(season)]
 
     battle_prefix = '싱글' if single else '더블'
-    for rule_id in sorted(the_season.keys()):
+    for rule_id in sorted(the_season.keys()): #rule_id ~= 매치 아이디(싱글 또는 더블의 양자택일)
         rule = '싱글' if rule_id.endswith('1') else '더블'
         if battle_prefix is rule:
 
             display(HTML(f"<h3>시즌 {season} {rule} 배틀 빈도 {start}위 ~ {end}위 포켓몬</h3>"))
-            pokemons = get_pokemon_rank(the_season[rule_id])
+            pokemons = get_pokemon_rank(the_season[rule_id]) #아래 코드는 결과물을 이쁘게 정리하기만함 (get_pokemon_rank의 output: 포켓몬 순위.)
             for i in range(start - 1, end):
                 pokemons[i]['name'] = POKEMON_NAME[pokemons[i]['id']]
                 pokemons[i]['type'] = POKEMON_TYPE[pokemons[i]['id']][pokemons[i]['form']]
                 pokemons[i]['type_kor'] = ', '.join([TYPE_NAME[x] for x in pokemons[i]['type']])
                 pokemons[i]['ranking'] = i + 1
+            print("=====================",pokemons,"==================================")
 
             dataframe = (pd.DataFrame(pokemons[start-1:end])
                            .drop(columns=['form', 'id', 'type'])
                            .rename(columns={'ranking': '순위', 'name': '이름', 'type_kor': '타입'})
                            .set_index('순위'))
             display(dataframe)
+            return pokemons
 
-# 원하는 포켓몬의 상세 정보를 보여주는 함수입니다.
+#5 원하는 포켓몬의 상세 정보를 보여주는 함수입니다.
 def display_pokemon_data(season, single, ranking, components):
   while True:
     if season ==21:
       break
     else:
       while True:
-        if ranking ==10:
+        if ranking == 10:
           break
         else:
           the_season = get_seasons()[str(season)]
@@ -148,7 +150,6 @@ def display_pokemon_data(season, single, ranking, components):
                   print("타입:", ', '.join([TYPE_NAME[x] for x in POKEMON_TYPE[pokemon['id']][pokemon['form']]]))
 
                   details = get_pokemon_details(the_season[rule_id])[str(pokemon['id'])][str(pokemon['form'])]
-
                   if '기술' in components:
                       moves = details['temoti']['waza']
                       display(HTML('<h4>기술</h4>'))
@@ -254,12 +255,15 @@ def display_pokemon_data(season, single, ranking, components):
                                     .rename(columns={'name': '이름', 'ranking': '순위', 'val': '빈도'})
                                     .set_index('순위'))
                       display(lose_moves_df)
+
+                  print("=========================== \n",details,"===========================================\n")
+
           season+=1
           continue
       continue
 
 
-
+#6
 def track_pokemon_data(pokemon, form, single, seasons, top_N, components, graphics):
     for pokemon_id, name in POKEMON_NAME.items():
         if pokemon == name:
