@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ info.name }} 정보</title>
+</head>
+<body>
+    <h1>{{ info.name }} 정보 (룰: {% if info.rule == 1 %}
+        더블
+        {% else %}
+        싱글
+        {% endif %}
+)</h1>
+    <p>시작 날짜: {{ info.start }}</p>
+    <p>종료 날짜: {{ info.end }}</p>
+    <p>총 플레이어 수: {{ info.cnt }}</p>
+{#    <p>시즌 번호: {{ info.season }}</p>#}
+    <p>룰: {% if info.rule == 1 %}
+        더블
+        {% else %}
+        싱글
+        {% endif %}
+
+    </p>
+    <p>RST: {{ info.rst }}</p>
+    <p>TS1: {{ info.ts1 }}</p>
+    <p>TS2: {{ info.ts2 }}</p>
+    <p>REG: {{ info.reg }}</p>
+    <br>
+    <a href="{{ url_for('main.season_info') }}">다른 시즌 검색하기</a>
+    <br>
+    <a href="{{ url_for('main.home') }}">홈으로 돌아가기</a>
+</body>
+</html>

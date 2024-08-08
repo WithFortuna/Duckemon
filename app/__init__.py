@@ -7,7 +7,7 @@ def create_app():
 
     # 라우트 불러오기
     from .routes import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    app.register_blueprint(main_blueprint) #서버와 url맵핑
 
     return app
 

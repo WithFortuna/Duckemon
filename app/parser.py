@@ -1,5 +1,6 @@
 import requests
 import json
+#{ts} : timeStamp, {rst}:??? , {mid}: 시즌, 싱글/더블
 
 URL_SEASONS = "https://api.battle.pokemon-home.com/cbd/competition/rankmatch/list"
 URL_TRAINER = "https://resource.pokemon-home.com/battledata/ranking/{mid}/{rst}/{ts}/traner-{idx}"
@@ -73,13 +74,15 @@ def get_trainer_rank(match, index):
         response = json.loads(response.text)
     except:
         raise Exception("서버로부터 받은 응답을 읽어들이지 못했습니다.\n{}".format(response.text))
-    
     return response
 
 
 # get_pokemon_rank - 포켓몬 순위 정보 가져오기
 #
 # match -> 시즌 정보로부터 가져온 매치 정보
+# 반환값 예시:  리스트
+#  [ {'id': 1, 'form': 0} {'id:2, 'form':0} {},... {} ]
+# .
 
 def get_pokemon_rank(match):
     _URL = URL_POKEMON.format(
