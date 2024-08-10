@@ -1,11 +1,15 @@
 from app import create_app
 from app.routes import main
 import app.apiNetworking as apiNetworking
+import app.routes as routes
+import pokebase.cache as cache
+import pokebase.api
 
 app = create_app()
 
 if __name__ == '__main__':
     app.run(debug=True) #서버 시작하기
+cache.set_cache('C:/Users/NT551XCJ/Desktop/start_backend/Project/Duckemon/cacheFile/')
 
 # apiNetworking.display_season_data(10)
 
@@ -21,6 +25,14 @@ end = 10 #@param {type:"integer"}
 # season = apiNetworking.display_season_data(9)
 # print("=======================",season,"=====================")
 # apiNetworking.display_season_data(35)
-
-
 # apiNetworking.display_pokemon_data(season,single,1,'기술')
+
+# routes.apiPractice('1')
+
+#pokebase 호출 예시
+#예시1: 함수
+# pokebase.api._call_sprite_api('pokemon',11, other=True, official_artwork=True, shiny=True)
+#예시2: 클래스
+p1 = pokebase.SpriteResource('pokemon',11,other=True, official_artwork=True, shiny=True) #SpriteResource 클래스 객체 생성
+print("==================",p1.url, p1.sprite_id, "============================") #객체 멤버변수 호출
+

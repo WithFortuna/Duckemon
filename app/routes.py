@@ -1,8 +1,12 @@
 #routes는 Controller와 유사함
 from flask import Blueprint, render_template, request,redirect, url_for
 import app.apiNetworking as apiNetworking
+from app.parser import *
 from app.constants import *
+import pokebase #pokeAPI의 wrapper라이브러리. pokebase/api.py - get_data, get_sprite
 main = Blueprint('main', __name__)
+POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon/{id}'
+
 
 #url_for(main.A함수명) 에서 main.A는 현재 스크립트의 '함수명'이다.
 # => 직접적인 url대신 사용
@@ -45,14 +49,14 @@ def season_info():
 
 @main.route('/season_info/<season_id>/<rule>')
 def show_season_info(season_id, rule):
-    info = apiNetworking.display_season_data(season_id)
+    info = get_seasons()[str(season_id)]
     for key, value in info.items():
         if value['rule'] == int(rule):
             season_key = key
             info = info.get(season_key)
     return render_template('show_season_info.html', info = info)
 
-#최다빈도 포켓몬 상세 보여주기
+#최다빈도 포켓몬. 상세 보여주기
 @main.route('/most_pokemon', methods=['GET', 'POST'])
 def most_pokemon():
     if request.method == 'POST':
@@ -149,6 +153,16 @@ def show_most_pokemon():
                 print("=====================================",lose_skills,"===================================")
                 return render_template('show_most_pokemon_details.html', detail_name ='진 기술', details=lose_skills, pokemon_name=pokemon_name)
 
+@main.route('/pokedex')
+def apiPractice(id): #id: str
+    URL = POKE_API_URL.format(id = str(id))
+
+    response = requests.get(URL)
+    if response.status_code == 200:
+        print(response.text)
+    else:
+        print(f"error: {response.status_code}")
+    print(response.text)
 
 
 

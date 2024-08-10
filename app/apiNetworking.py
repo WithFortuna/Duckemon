@@ -262,114 +262,114 @@ def display_pokemon_data(season, single, ranking, components):
           continue
       continue
 
-
-#6
-def track_pokemon_data(pokemon, form, single, seasons, top_N, components, graphics):
-    for pokemon_id, name in POKEMON_NAME.items():
-        if pokemon == name:
-            dex_no = pokemon_id
-
-    battle_prefix = '싱글' if single else '더블'
-    display(HTML(f"<h3>시즌별 {battle_prefix} 배틀 {pokemon} 상세 정보</h3>"))
-    print("타입:", ', '.join([TYPE_NAME[x] for x in POKEMON_TYPE[dex_no][form]]))
-
-    moves_df = {}
-    abilities_df = {}
-    items_df = {}
-    win_moves_df = {}
-    lose_moves_df = {}
-
-    the_seasons = get_seasons()
-    columns = ['이름']
-    for season in seasons:
-        columns.append(f'시즌{season}')
-
-        for rule_id in sorted(the_seasons[str(season)].keys()):
-            rule = '싱글' if rule_id.endswith('1') else '더블'
-            if battle_prefix is rule:
-
-                details = get_pokemon_details(the_seasons[str(season)][rule_id])[str(dex_no)][str(form)]
-
-                if '기술' in components:
-                    moves = details['temoti']['waza']
-                    for i in range(0, len(moves)):
-                        moves[i]['name'] = SKILL_NAME[int(moves[i]['id'])]
-                        moves[i]['ranking'] = i + 1
-                    moves_df[season] = (pd.DataFrame(moves)
-                                  .drop(columns=['id'])
-                                  .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
-                                  .set_index('순위')
-                                  .astype({f'시즌{season}': 'float64'}))
-
-                if '특성' in components:
-                    abilities = details['temoti']['tokusei']
-                    for i in range(0, len(abilities)):
-                        abilities[i]['name'] = ABILITY_NAME[int(abilities[i]['id'])]
-                        abilities[i]['ranking'] = i + 1
-                    abilities_df[season] = (pd.DataFrame(abilities)
-                                  .drop(columns=['id'])
-                                  .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
-                                  .set_index('순위')
-                                  .astype({f'시즌{season}': 'float64'}))
-
-                if '도구' in components:
-                    items = details['temoti']['motimono']
-                    for i in range(0, len(items)):
-                        items[i]['name'] = ITEM_NAME[int(items[i]['id'])]
-                        items[i]['ranking'] = i + 1
-                    items_df[season] = (pd.DataFrame(items)
-                                  .drop(columns=['id'])
-                                  .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
-                                  .set_index('순위')
-                                  .astype({f'시즌{season}': 'float64'}))
-
-    if '기술' in components:
-        display(HTML('<h4>기술</h4>'))
-        moves_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer'),
-                                 moves_df.values())
-                           .sort_values(by=f'시즌{max(seasons)}', ascending=False)
-                           .reset_index(drop=True)[:top_N][columns])
-        if '표' in graphics:
-            moves_df_merged.index += 1
-            display(moves_df_merged)
-        if '그래프' in graphics:
-            moves_df_merged = moves_df_merged.set_index('이름').T
-            plt.figure(figsize=[15, 7])
-            sns.lineplot(data=moves_df_merged, marker="o", dashes=False, sort=False)
-            plt.ylabel('빈도(%)')
-            plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
-            plt.show()
-
-    if '특성' in components:
-        display(HTML('<h4>특성</h4>'))
-        abilities_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer').fillna(0),
-                                 abilities_df.values())
-                               .sort_values(by=f'시즌{max(seasons)}', ascending=False)
-                               .reset_index(drop=True)[columns])
-        if '표' in graphics:
-            abilities_df_merged.index += 1
-            display(abilities_df_merged)
-        if '그래프' in graphics:
-            abilities_df_merged = abilities_df_merged.set_index('이름').T
-            plt.figure(figsize=[15, 7])
-            sns.lineplot(data=abilities_df_merged, marker="o", dashes=False, sort=False)
-            plt.ylabel('빈도(%)')
-            plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
-            plt.show()
-
-    if '도구' in components:
-        display(HTML('<h4>도구</h4>'))
-        items_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer'),
-                                 items_df.values())
-                           .sort_values(by=f'시즌{max(seasons)}', ascending=False)
-                           .reset_index(drop=True)[:top_N][columns])
-        if '표' in graphics:
-            items_df_merged.index += 1
-            display(items_df_merged)
-        if '그래프' in graphics:
-            items_df_merged = items_df_merged.set_index('이름').T
-            plt.figure(figsize=[15, 7])
-            sns.lineplot(data=items_df_merged, marker="o", dashes=False, sort=False)
-            plt.ylabel('빈도(%)')
-            plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
-            plt.show()
+#
+# #6 그래프 출력 함수
+# def track_pokemon_data(pokemon, form, single, seasons, top_N, components, graphics):
+#     for pokemon_id, name in POKEMON_NAME.items():
+#         if pokemon == name:
+#             dex_no = pokemon_id
+#
+#     battle_prefix = '싱글' if single else '더블'
+#     display(HTML(f"<h3>시즌별 {battle_prefix} 배틀 {pokemon} 상세 정보</h3>"))
+#     print("타입:", ', '.join([TYPE_NAME[x] for x in POKEMON_TYPE[dex_no][form]]))
+#
+#     moves_df = {}
+#     abilities_df = {}
+#     items_df = {}
+#     win_moves_df = {}
+#     lose_moves_df = {}
+#
+#     the_seasons = get_seasons()
+#     columns = ['이름']
+#     for season in seasons:
+#         columns.append(f'시즌{season}')
+#
+#         for rule_id in sorted(the_seasons[str(season)].keys()):
+#             rule = '싱글' if rule_id.endswith('1') else '더블'
+#             if battle_prefix is rule:
+#
+#                 details = get_pokemon_details(the_seasons[str(season)][rule_id])[str(dex_no)][str(form)]
+#
+#                 if '기술' in components:
+#                     moves = details['temoti']['waza']
+#                     for i in range(0, len(moves)):
+#                         moves[i]['name'] = SKILL_NAME[int(moves[i]['id'])]
+#                         moves[i]['ranking'] = i + 1
+#                     moves_df[season] = (pd.DataFrame(moves)
+#                                   .drop(columns=['id'])
+#                                   .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
+#                                   .set_index('순위')
+#                                   .astype({f'시즌{season}': 'float64'}))
+#
+#                 if '특성' in components:
+#                     abilities = details['temoti']['tokusei']
+#                     for i in range(0, len(abilities)):
+#                         abilities[i]['name'] = ABILITY_NAME[int(abilities[i]['id'])]
+#                         abilities[i]['ranking'] = i + 1
+#                     abilities_df[season] = (pd.DataFrame(abilities)
+#                                   .drop(columns=['id'])
+#                                   .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
+#                                   .set_index('순위')
+#                                   .astype({f'시즌{season}': 'float64'}))
+#
+#                 if '도구' in components:
+#                     items = details['temoti']['motimono']
+#                     for i in range(0, len(items)):
+#                         items[i]['name'] = ITEM_NAME[int(items[i]['id'])]
+#                         items[i]['ranking'] = i + 1
+#                     items_df[season] = (pd.DataFrame(items)
+#                                   .drop(columns=['id'])
+#                                   .rename(columns={'name': '이름', 'ranking': '순위', 'val': f'시즌{season}'})
+#                                   .set_index('순위')
+#                                   .astype({f'시즌{season}': 'float64'}))
+#
+#     if '기술' in components:
+#         display(HTML('<h4>기술</h4>'))
+#         moves_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer'),
+#                                  moves_df.values())
+#                            .sort_values(by=f'시즌{max(seasons)}', ascending=False)
+#                            .reset_index(drop=True)[:top_N][columns])
+#         if '표' in graphics:
+#             moves_df_merged.index += 1
+#             display(moves_df_merged)
+#         if '그래프' in graphics:
+#             moves_df_merged = moves_df_merged.set_index('이름').T
+#             plt.figure(figsize=[15, 7])
+#             sns.lineplot(data=moves_df_merged, marker="o", dashes=False, sort=False)
+#             plt.ylabel('빈도(%)')
+#             plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
+#             plt.show()
+#
+#     if '특성' in components:
+#         display(HTML('<h4>특성</h4>'))
+#         abilities_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer').fillna(0),
+#                                  abilities_df.values())
+#                                .sort_values(by=f'시즌{max(seasons)}', ascending=False)
+#                                .reset_index(drop=True)[columns])
+#         if '표' in graphics:
+#             abilities_df_merged.index += 1
+#             display(abilities_df_merged)
+#         if '그래프' in graphics:
+#             abilities_df_merged = abilities_df_merged.set_index('이름').T
+#             plt.figure(figsize=[15, 7])
+#             sns.lineplot(data=abilities_df_merged, marker="o", dashes=False, sort=False)
+#             plt.ylabel('빈도(%)')
+#             plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
+#             plt.show()
+#
+#     if '도구' in components:
+#         display(HTML('<h4>도구</h4>'))
+#         items_df_merged = (reduce(lambda left, right: pd.merge(left, right, on='이름', how='outer'),
+#                                  items_df.values())
+#                            .sort_values(by=f'시즌{max(seasons)}', ascending=False)
+#                            .reset_index(drop=True)[:top_N][columns])
+#         if '표' in graphics:
+#             items_df_merged.index += 1
+#             display(items_df_merged)
+#         if '그래프' in graphics:
+#             items_df_merged = items_df_merged.set_index('이름').T
+#             plt.figure(figsize=[15, 7])
+#             sns.lineplot(data=items_df_merged, marker="o", dashes=False, sort=False)
+#             plt.ylabel('빈도(%)')
+#             plt.legend(fontsize=12, bbox_to_anchor=(1, 0.5), loc='center left')
+#             plt.show()
