@@ -5,12 +5,13 @@
 3. 순위 커트라인
 4. op포켓몬 순위
 5. 포켓몬 상세 정보
+
 <용어>
 seasons = season 집합
 season = {싱글매치 1개, 더블 매치 1개} // 각각은 season.keys()로 분류
 match = {싱글 또는 더블} //양자택일
 
-
+ts1, ts2: UNIX 타임스탬프이며 년월일로 변환 가능
 
 <배운점>
 
@@ -21,6 +22,91 @@ JSON 객체-> dict로, JSON 배열 -> list로 변환됩니다.
    Flask 어플리케이션 ~ Spring앱컨텍스트  : 서버 실행(스프링같은 경우는 톰캣서버)
    routes.py 파일 ~ Controller 클래스 : url과 html 맵핑
    템플릿 엔진: Jinja2 ~ Thymeleaf : 자바(파이썬)의 객체를 html에 전달
+
+
+- 딕셔너리 자료형 dic = { key : value}
+dic.get(키값)  => value가 나온다
+dic.items() => 딕셔너리 순회
+또는
+dic['키'] 하면 value가 나옴.
++ jinja2템플릿 엔진에서 dic.키값 => value가 나온다
+
+- url_for(main.A함수명) 에서 main.A는 현재 스크립트의 '함수명'이다.
+ => 직접적인 url대신 사용
+
+
+-json 데이터 타입
+1.객체 : { }
+2. 배열: [ ]
+.3 문자열, 숫자, boolean
+
+
+-클래스의 객체가 어떤 멤버변수 또는 멤버함수를 갖는지 아는 방법:
+dir(객체) 또는 객체.__dir__ 또는 객체.__dict__
+
+-외부 서버에 있는 이미지 파일을 내 서버의 프론트에 대량 뿌려줘야 하는 상황
+=> 대량이라면 내 서버의 백엔드에서 프록시로 제공
+
+
+-외부서버에서 데이터를 다량 요청해야하는 상황. 요청 수가 많아서 인터넷을 많이 타다보니
+속도가 매우 느림
+=> 멀티스레딩으로 요청을 동시에 처리 & api요청을 묶어서 보내기(비동기 api)
+# 멀티스레딩을 사용하여 병렬 처리
+    with ThreadPoolExecutor(max_workers=10) as executor:  # max_workers를 조정하여 동시 요청 수 제한
+        future_to_pokemon = {executor.submit(process_pokemon, pokemons[k]): k for k in range(start, end)}
+        for future in as_completed(future_to_pokemon):
+            k = future_to_pokemon[future]
+            try:
+                pokemon = future.result()
+                print(f"처리 완료: {pokemon['name']}")
+            except Exception as exc:
+                print(f'{pokemons[k]["name"]} 처리 중 오류 발생: {exc}')
+
+-문제: 멀티스레딩으로 인한 캐시파일 충돌, shelve를 사용했으나 ZODB,DBM 사용을 권하드라
+->하나의 cache파일에 동시에 접근하는 동시성문제가 발생하는 듯. portalocker모듈 이용(잠금 및 timeout)
+?동시성 친화적인 DB(데이터베이스)가 redis?
+해결: shelve(캐시 파일 read, write)할 때에 동시 접근으로 인해 문제가 생겼으므로 cache파일을 하나의 스레드
+에서만 관리되도록 portalocker라이브러리 사용( :다른 스레드 또는 프로세스에서 같은 파일을 동시에 접근하는 것을 막는다)
+
+def load(endpoint, resource_id=None, subresource=None):
+
+    uri = cache_uri_build(endpoint, resource_id, subresource)
+
+    while True:
+        try:
+            with portalocker.Lock(API_CACHE+'.lock', timeout=20 ):  #추가
+                with shelve.open(API_CACHE) as cache:
+                    # print(f"잠금해제 성공 endpoint: {endpoint}, id:{resource_id}")
+                    return cache[uri]
+
+        except portalocker.exceptions.AlreadyLocked:
+            print(f"파일 잠겨서 대기중... endpoint: {endpoint}, id:{resource_id}")
+            time.sleep(1)
+----------------------------------------------------------------------
+
+skills = [ {스킬}{스킬}{스킬}{스킬}{스킬} ]
+abilities = [     {특성}{특성}{특성}   ] 
+
+
+
+https://pokeapi.co/api/v2/ ~~
+pokemon/ditto
+pokemkon-species/aegislash
+ability/battle-armor
+...
+
+reponse 형식: 
+ {"count": 20
+  "next"
+  "previous"
+  "results": [ {포켓몬}{포켓몬}  ]
+}
+
+pokemon/other/official-artwork/shiny/11.png
+**kwargs = { "other": {"official-artwork": {"front_shiny": true }}}
+
+
+
 
   
 

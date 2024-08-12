@@ -1,11 +1,16 @@
 #routes는 Controller와 유사함
-from flask import Blueprint, render_template, request,redirect, url_for
+import traceback
+
+from flask import Blueprint, render_template, request,redirect, url_for, send_from_directory
 import app.apiNetworking as apiNetworking
 from app.parser import *
 from app.constants import *
-import pokebase #pokeAPI의 wrapper라이브러리. pokebase/api.py - get_data, get_sprite
+import pokebase, pokebase.api, pokebase.loaders #pokeAPI의 wrapper라이브러리. pokebase/api.py - get_data, get_sprite
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 main = Blueprint('main', __name__)
-POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon/{id}'
+POKE_API_URL = 'https://pokeapi.co/api/v2/{endpoint}/{id}'
 
 
 #url_for(main.A함수명) 에서 main.A는 현재 스크립트의 '함수명'이다.
@@ -153,7 +158,9 @@ def show_most_pokemon():
                 print("=====================================",lose_skills,"===================================")
                 return render_template('show_most_pokemon_details.html', detail_name ='진 기술', details=lose_skills, pokemon_name=pokemon_name)
 
-@main.route('/pokedex')
+
+#------------------------------------------------------ 하단의 함수들은 모두 pokeAPI를 이용
+@main.route('/pokedexAlpha')
 def apiPractice(id): #id: str
     URL = POKE_API_URL.format(id = str(id))
 
@@ -164,6 +171,317 @@ def apiPractice(id): #id: str
         print(f"error: {response.status_code}")
     print(response.text)
 
+@main.route('/cacheFile/sprite/pokemon/<filename>')
+def get_pokemon_sprite(filename):
+    # pokemon_obj = pokebase.pokemon(filename)
+    #
+    # filename = str(pokemon_obj.id)+'.png' #pokemon_name->pokemon_id 변환
+    with open('pokemons_ver2.json', 'r', encoding='utf-8') as json_file:
+        pokemons = json.load(json_file)
+    pokemon = next((p for p in pokemons if p.get('name') == filename), None)
+    id = pokemon['url'].split('/')[-2]
+    print(f"위치: get_pokemon_sprite 포켓몬: {pokemon} 이미지 로드, id: {id}")
 
 
+    #send_from_directroy 사용예시
+    #경로: C:/Users/NT551XCJ/Desktop/start_backend/Project/Duckemon/cacheFile/sprite/pokemon/1.png
+    #send_from_directroy('C:/Users/NT551XCJ/Desktop/start_backend/Project/Duckemon/cacheFile/sprite/pokemon', 1.png)
+    filename = id+'.png'
+    return send_from_directory('C:/Users/NT551XCJ/Desktop/start_backend/Project/Duckemon/cacheFile/sprite/pokemon', filename)
+#실시간 pokeAPI데이터가 아닌 로컬에 저장되어 있는 pokemons.json파일을 이용
+@main.route('/pokedex')
+def pokedex_home():
+    #도감화면
+    #필요 데이터: 포켓몬 객체
+    #포켓몬 객체 = {이름, ability, form, type }
+    #전달인자: pokemons리스트
+
+    with open('pokemons_ver2.json', 'r', encoding='utf-8') as json_file:
+        all_pokemons = json.load(json_file)
+
+
+    page = int(request.args.get('page', 1))  # 페이지 번호, 기본값은 1
+    per_page = 30  # 한 페이지에 표시할 포켓몬 수
+    start = (page - 1) * per_page
+    end = start + per_page
+    pokemons = all_pokemons[start:end]  # 현재 페이지에 해당하는 포켓몬들 선택
+
+    total_pages = (len(all_pokemons) + per_page - 1) // per_page  # 전체 페이지 수 계산
+
+    return render_template('show_pokedex.html', pokemons=pokemons, page=page, total_pages=total_pages)
+
+
+@main.route('/pokedex/<pokemon_name>')
+def pokedex_detail(pokemon_name):
+    #pokemon fetch
+    with open('pokemons_ver2.json', 'r', encoding='utf-8') as json_file:
+        pokemons = json.load(json_file)
+    pokemon = next((p for p in pokemons if p.get('name') == pokemon_name),None)
+    print(f"pokemon_name: {pokemon_name}, pokemon: {pokemon}")
+    try:
+        if pokemon is None:
+            raise ValueError("포켓몬 못찾음")
+    except ValueError as e:
+        print(f"오류발생: {e}")
+
+    return render_template('show_pokedex_detail.html', pokemon = pokemon)
+
+
+
+#기능: pokemons.json 파일을 초기화 by pokeAPI서버.
+def init_pokedex(start, end): # pokemons[start] ~ pokemons[end-1] 까지 api서 정보 받아오기 및 업데이트
+
+    pokemons = pokebase.api.get_data('pokemon')['results']
+    with open('pokemons.json', 'r', encoding='utf-8') as json_file:
+        old_pokemons = json.load(json_file)
+
+    ## old_pokemons와 새로 업데이트한 pokemons비교 하기 전
+    #pokemons 새로 받아오기#################################################################
+
+# j=0
+    for k in range(start, end): # pokemons[start] ~ pokemons[end-1] 까지 api서 정보 받아오기
+        # j+=1
+        # if j==10:
+        #     break
+        pokemon= pokemons[k]
+        name = pokemon['name']
+        pokemon_obj = pokebase.loaders.pokemon(name)
+        # print(f"없는 포켓몬 추가 & 이름: {name}")
+
+        abilities = pokemon_obj.abilities
+        ability_list = []
+        is_hidden_list = []
+        for ability in abilities:
+            names = ability.ability.names
+            for lan_name in names:
+                if lan_name.language.name == 'ko':
+                    ability_list.append(lan_name.name)
+                    # print("------------------",lan_name.name)
+            is_hidden_list.append(ability.is_hidden)
+        pokemon['ability'] = ability_list
+        pokemon['is_hidden'] = is_hidden_list
+        # print("**포켓몬: ",pokemon)
+
+        # 2. forms/name 추가
+        forms = pokemon_obj.forms
+        form_list = []
+        for form in forms:
+            print(form.id_)
+            form_list.append(pokebase.loaders.pokemon_form(form.id_).name)
+        pokemon['form'] = form_list
+
+        # 3. types/type/name 추가
+        types = pokemon_obj.types
+        type_list = []
+        for type in types:
+            type_list.append(type.type.name)
+        pokemon['type'] = type_list
+
+        # 4. sprites/front-default의 systemPath 추가
+        sprite = pokebase.loaders.sprite('pokemon', pokemon_obj.id) #**kwargs 지정을 안했으므로 front_default선택
+        pokemon['sprite'] = sprite.path
+    print('*************초기화 완료************', pokemons,"***************")
+
+        ######################################################################## 하단은 old_pokemon과pokemons비교 및 업데이트
+    updated1 = False
+    # size=0 #업데이트 예정 포켓몬 개수
+    for n in range(start,end):
+        pokemon= pokemons[n]
+        name = pokemon['name']
+        updated2 = False
+        # size+=1
+        # if size==8:
+        #     print("종료")
+        #     break
+
+        result = next((temp for temp in old_pokemons if temp['name'] == name), None)
+        # case1: pokemons/pokemon/name이 old_pokemons에 없는 경우 : pokemon 추가
+        if result is None:
+            updated1=True
+            updated2=True
+            print(f"없는 포켓몬 추가 & 이름: {name}")
+            old_pokemons.append(pokemon)
+
+        # case2: pokemon/name은 존재 && 해당 포켓몬의 내용이 old_pokemons에 없는 경우 : 해당 pokemon 부분 수정
+        elif not all(result.get(key) == value for key, value in pokemon.items()):
+            print(f"존재하는 포켓몬 부분 수정: {name}")
+            result.update(pokemon)
+            updated1=True
+            updated2=True
+
+        if not updated2:
+            print(f"포켓몬 {name}은 건너뜀")
+
+    if updated1:
+        try:
+            with open('pokemons.json', 'w', encoding='utf-8') as json_file:
+                json.dump(old_pokemons, json_file, ensure_ascii=False, indent=4)
+            print("포켓몬 정보가 성공적으로 저장되었습니다.")
+            print("old_pokemons: ",old_pokemons)
+        except Exception as e:
+            print(f"파일 저장 중 오류 발생: {e}")
+    else:
+        print("업데이트할 내용이 없습니다.")
+        print("old_pokemons: ", old_pokemons)
+
+    #
+    # #1. abilities/ability 및 is_hidden을 pokemon딕셔너리에 추가
+    # for pokemon in pokemons:
+    #     name=pokemon['name']
+    #     pokemon_obj = pokebase.loaders.pokemon(name)
+    #     # info = pokebase.api.get_data('pokemon',name) 필요시 name_id_convert(endpoint, name_or_id)
+    #     abilities=pokemon_obj.abilities
+    #     ability_list = []
+    #     is_hidden_list=[]
+    #     for ability in abilities:
+    #         names = ability.ability.names
+    #         for lan_name in names:
+    #             if lan_name.language.name == 'ko':
+    #                 ability_list.append(lan_name.name)
+    #                 # print("------------------",lan_name.name)
+    #         is_hidden_list.append(ability.is_hidden)
+    #     pokemon['ability'] = ability_list
+    #     pokemon['is_hidden'] = is_hidden_list
+    #     # print("**포켓몬: ",pokemon)
+    #
+    #     #2. forms/name 추가
+    #     forms=pokemon_obj.forms
+    #     form_list=[]
+    #     for form in forms:
+    #         print(form.id_)
+    #         form_list.append(pokebase.loaders.pokemon_form(form.id_).name)
+    #     pokemon['form'] = form_list
+    #
+    #     #3. types/type/name 추가
+    #     types=pokemon_obj.types
+    #     type_list=[]
+    #     for type in types:
+    #         type_list.append(type.type.name)
+    #     pokemon['type'] = type_list
+    #
+    #     #4. sprites/front-default의 systemPath 추가
+    #     sprite = pokebase.loaders.sprite('pokemon', pokebase.loaders.pokemon(name).id)
+    #     pokemon['sprite'] = sprite.path
+    #     print('**pokemon:', pokemon)
+    #
+    #     with open('pokemons.json', 'w', encoding='utf-8') as json_file:
+    #         json.dump(pokemons, json_file, ensure_ascii=False, indent=4)
+    #
+
+#init_pokedex()개선판: 멀티스레딩
+def process_pokemon(pokemon):
+    pokemon_obj=None
+    try:
+        name = pokemon['name']
+        pokemon_obj = pokebase.loaders.pokemon(name)
+        if pokemon_obj is None:
+            raise ValueError(f"객체생성실패1 pokemon: {name}")
+
+        if pokemon_obj is not None:
+
+            # Abilities
+            abilities = pokemon_obj.abilities
+            ability_list = []
+            is_hidden_list = []
+            for ability in abilities:
+                names = ability.ability.names
+                for idx, lan_name in enumerate(names): #index와 name원소 동시에 취함
+                    if lan_name.language.name == 'ko':
+                        ability_list.append(lan_name.name)
+                    elif idx == len(names)-1: #'ko'가 names에 없는 경우를 위해
+                        ability_list.append( next((lan_name.name for lan_name in names if lan_name.language.name == 'en'), None) )
+
+                is_hidden_list.append(ability.is_hidden)
+            pokemon['ability'] = ability_list
+            pokemon['is_hidden'] = is_hidden_list
+
+            # Forms
+            forms = pokemon_obj.forms
+            form_list = []
+            for form in forms:
+                print(form.id_)
+                form_list.append(pokebase.loaders.pokemon_form(form.id_).name)
+            pokemon['form'] = form_list
+            # Types
+            types = pokemon_obj.types
+            type_list = []
+            for type in types:
+                type_list.append(type.type.name)
+            pokemon['type'] = type_list
+
+            # Sprite
+            try:
+                sprite = pokebase.loaders.sprite('pokemon', pokemon_obj.id)
+                pokemon['sprite'] = sprite.path
+            except Exception as e:
+                pokemon['sprite'] = None
+            # time.sleep(0.5)  # API 요청 제한을 고려한 대기 시간
+            return pokemon
+    except Exception as exc:
+        print(f"===========================위치:process_pokemon pokemon: {name}// pokemon_obj:{pokemon_obj} 처리중 오류발생: {exc}")
+        traceback.print_exc()
+        # time.sleep(1)
+        return pokemon
+
+def init_pokedex_enhanced(start, end):
+    ##########################################################part1: 데이터 받아오기 & 캐시 및 로컬변수에 저장하기
+    pokemons = pokebase.api.get_data('pokemon')['results']
+    with open('pokemons_ver2.json', 'r', encoding='utf-8') as json_file:
+        old_pokemons = json.load(json_file)
+
+    # 멀티스레딩을 사용하여 병렬 처리
+    with ThreadPoolExecutor(max_workers=5) as executor:  # max_workers를 조정하여 동시 요청 수 제한
+        future_to_pokemon = {executor.submit(process_pokemon, pokemons[k]): k for k in range(start, end)} #future_to_pokemon = {pokemmons[1]:1, pokemons[2]:2 ,...  }
+        for future in as_completed(future_to_pokemon): #future:pokemons[?]. 즉 key
+            k = future_to_pokemon[future]
+            try:
+                pokemon = future.result()
+                print(f"처리 완료: {pokemon['name']}")
+            except Exception as exc:
+                print("==============",pokemons[k],'====================')
+                print(f'{pokemons[k]["name"]} 처리 중 오류 발생: {exc}')
+                continue
+
+    print('*************초기화 완료************', pokemons[start:end], "***************")
+    ##################################################################################################part2: 받아온 새 데이터를 로컬 json파일에 업데이트
+    updated1 = False
+    # size=0 #업데이트 예정 포켓몬 개수
+    for n in range(start,end):
+        pokemon= pokemons[n]
+        name = pokemon['name']
+        updated2 = False
+        # size+=1
+        # if size==8:
+        #     print("종료")
+        #     break
+
+        result = next((temp for temp in old_pokemons if temp['name'] == name), None)
+        # case1: pokemons/pokemon/name이 old_pokemons에 없는 경우 : pokemon 추가
+        if result is None:
+            updated1=True
+            updated2=True
+            print(f"없는 포켓몬 추가 & 이름: {name}")
+            old_pokemons.append(pokemon)
+
+        # case2: pokemon/name은 존재 && 해당 포켓몬의 내용이 old_pokemons에 없는 경우 : 해당 pokemon 부분 수정
+        elif not all(result.get(key) == value for key, value in pokemon.items()):
+            print(f"존재하는 포켓몬 부분 수정: {name}")
+            result.update(pokemon)
+            updated1=True
+            updated2=True
+
+        if not updated2:
+            print(f"포켓몬 {name}은 건너뜀")
+
+    if updated1:
+        try:
+            with open('pokemons_ver2.json', 'w', encoding='utf-8') as json_file:
+                json.dump(old_pokemons, json_file, ensure_ascii=False, indent=4)
+            print("포켓몬 정보가 성공적으로 저장되었습니다.")
+            print("old_pokemons: ",old_pokemons)
+        except Exception as e:
+            print(f"파일 저장 중 오류 발생: {e}")
+    else:
+        print("업데이트할 내용이 없습니다.")
+        print("old_pokemons: ", old_pokemons)
 

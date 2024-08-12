@@ -6,4 +6,4 @@ requests
 #참고
 템플릿 엔진 : jinja2
 #깃허브 pokebase wrapper라이브러리 사용
-pokebase
+pokebase #pokebase 패키지 내 함수 수정있음.
