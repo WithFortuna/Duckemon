@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포켓몬 도감</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pokemon-card {
+            margin: 10px;
+            text-align: center;
+            width: 150px;
+        }
+        .pokemon-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+        .pagination {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    {% for pokemon in pokemons %}
+    <div class="pokemon-card">
+        <a href="{{ url_for('main.pokedex_detail', pokemon_name=pokemon.name) }}">
+            <img src="{{ url_for('main.get_pokemon_sprite', filename=pokemon.name) }}" alt="{{ pokemon.name }}">
+            <p>{{ pokemon.name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+
+    <!-- 페이징 네비게이션 -->
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('main.pokedex_home', page=page-1) }}">&laquo; Previous</a>
+        {% endif %}
+        {% for p in range(1, total_pages + 1) %}
+            {% if p == page %}
+                <strong>{{ p }}</strong>
+            {% else %}
+                <a href="{{ url_for('main.pokedex_home', page=p) }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page < total_pages %}
+            <a href="{{ url_for('main.pokedex_home', page=page + 1 ) }}">Next &raquo;</a>
+        {% endif %}
+    </div>
+</body>
+</html>

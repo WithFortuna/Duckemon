@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pokemon.name }} 상세 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ pokemon.name }}</h1>
+    <img src="{{ url_for('main.get_pokemon_sprite', filename = pokemon.name) }}" alt="{{ pokemon.name }}">
+
+    <h2>능력</h2>
+    <ul>
+        {% for ability in pokemon.ability %}
+        <li>{{ ability }}</li>
+        {% endfor %}
+    </ul>
+    <h2>숨겨진 능력</h2>
+    <ul>
+        {% for is_hidden in pokemon.is_hidden %}
+        <li>{{ "예" if is_hidden else "아니오" }}</li>
+        {% endfor %}
+    </ul>
+    <h2>형태</h2>
+    <ul>
+        {% for form in pokemon.form %}
+        <li>{{ form }}</li>
+        {% endfor %}
+    </ul>
+    <h2>타입</h2>
+    <ul>
+        {% for type in pokemon.type %}
+        <li>{{ type }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.home') }}">돌아가기</a>
+</body>
+</html>

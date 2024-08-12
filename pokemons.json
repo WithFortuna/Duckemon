@@ -1,0 +1,2072 @@
+[
+    {
+        "name": "bulbasaur",
+        "url": "https://pokeapi.co/api/v2/pokemon/1/",
+        "ability": [
+            "심록",
+            "엽록소"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "bulbasaur"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\1.png"
+    },
+    {
+        "name": "ivysaur",
+        "url": "https://pokeapi.co/api/v2/pokemon/2/",
+        "ability": [
+            "심록",
+            "엽록소"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "ivysaur"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\2.png"
+    },
+    {
+        "name": "venusaur",
+        "url": "https://pokeapi.co/api/v2/pokemon/3/",
+        "ability": [
+            "심록",
+            "엽록소"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "venusaur"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\3.png"
+    },
+    {
+        "name": "charmander",
+        "url": "https://pokeapi.co/api/v2/pokemon/4/",
+        "ability": [
+            "맹화",
+            "선파워"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "charmander"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\4.png"
+    },
+    {
+        "name": "charmeleon",
+        "url": "https://pokeapi.co/api/v2/pokemon/5/",
+        "ability": [
+            "맹화",
+            "선파워"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "charmeleon"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\5.png"
+    },
+    {
+        "name": "charizard",
+        "url": "https://pokeapi.co/api/v2/pokemon/6/",
+        "ability": [
+            "맹화",
+            "선파워"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "charizard"
+        ],
+        "type": [
+            "fire",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\6.png"
+    },
+    {
+        "name": "squirtle",
+        "url": "https://pokeapi.co/api/v2/pokemon/7/",
+        "ability": [
+            "급류",
+            "젖은접시"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "squirtle"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\7.png"
+    },
+    {
+        "name": "wartortle",
+        "url": "https://pokeapi.co/api/v2/pokemon/8/",
+        "ability": [
+            "급류",
+            "젖은접시"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "wartortle"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\8.png"
+    },
+    {
+        "name": "blastoise",
+        "url": "https://pokeapi.co/api/v2/pokemon/9/",
+        "ability": [
+            "급류",
+            "젖은접시"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "blastoise"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\9.png"
+    },
+    {
+        "name": "caterpie",
+        "url": "https://pokeapi.co/api/v2/pokemon/10/",
+        "ability": [
+            "인분",
+            "도주"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "caterpie"
+        ],
+        "type": [
+            "bug"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\10.png"
+    },
+    {
+        "name": "metapod",
+        "url": "https://pokeapi.co/api/v2/pokemon/11/",
+        "ability": [
+            "탈피"
+        ],
+        "is_hidden": [
+            false
+        ],
+        "form": [
+            "metapod"
+        ],
+        "type": [
+            "bug"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\11.png"
+    },
+    {
+        "name": "butterfree",
+        "url": "https://pokeapi.co/api/v2/pokemon/12/",
+        "ability": [
+            "복안",
+            "색안경"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "butterfree"
+        ],
+        "type": [
+            "bug",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\12.png"
+    },
+    {
+        "name": "weedle",
+        "url": "https://pokeapi.co/api/v2/pokemon/13/",
+        "ability": [
+            "인분",
+            "도주"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "weedle"
+        ],
+        "type": [
+            "bug",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\13.png"
+    },
+    {
+        "name": "kakuna",
+        "url": "https://pokeapi.co/api/v2/pokemon/14/",
+        "ability": [
+            "탈피"
+        ],
+        "is_hidden": [
+            false
+        ],
+        "form": [
+            "kakuna"
+        ],
+        "type": [
+            "bug",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\14.png"
+    },
+    {
+        "name": "beedrill",
+        "url": "https://pokeapi.co/api/v2/pokemon/15/",
+        "ability": [
+            "벌레의알림",
+            "스나이퍼"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "beedrill"
+        ],
+        "type": [
+            "bug",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\15.png"
+    },
+    {
+        "name": "pidgey",
+        "url": "https://pokeapi.co/api/v2/pokemon/16/",
+        "ability": [
+            "날카로운눈",
+            "갈지자걸음",
+            "부풀린가슴"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "pidgey"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\16.png"
+    },
+    {
+        "name": "pidgeotto",
+        "url": "https://pokeapi.co/api/v2/pokemon/17/",
+        "ability": [
+            "날카로운눈",
+            "갈지자걸음",
+            "부풀린가슴"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "pidgeotto"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\17.png"
+    },
+    {
+        "name": "pidgeot",
+        "url": "https://pokeapi.co/api/v2/pokemon/18/",
+        "ability": [
+            "날카로운눈",
+            "갈지자걸음",
+            "부풀린가슴"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "pidgeot"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\18.png"
+    },
+    {
+        "name": "rattata",
+        "url": "https://pokeapi.co/api/v2/pokemon/19/",
+        "ability": [
+            "도주",
+            "근성",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "rattata"
+        ],
+        "type": [
+            "normal"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\19.png"
+    },
+    {
+        "name": "raticate",
+        "url": "https://pokeapi.co/api/v2/pokemon/20/",
+        "ability": [
+            "도주",
+            "근성",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "raticate"
+        ],
+        "type": [
+            "normal"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\20.png"
+    },
+    {
+        "name": "spearow",
+        "url": "https://pokeapi.co/api/v2/pokemon/21/",
+        "ability": [
+            "날카로운눈",
+            "스나이퍼"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "spearow"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\21.png"
+    },
+    {
+        "name": "fearow",
+        "url": "https://pokeapi.co/api/v2/pokemon/22/",
+        "ability": [
+            "날카로운눈",
+            "스나이퍼"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "fearow"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\22.png"
+    },
+    {
+        "name": "ekans",
+        "url": "https://pokeapi.co/api/v2/pokemon/23/",
+        "ability": [
+            "위협",
+            "탈피",
+            "긴장감"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "ekans"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\23.png"
+    },
+    {
+        "name": "arbok",
+        "url": "https://pokeapi.co/api/v2/pokemon/24/",
+        "ability": [
+            "위협",
+            "탈피",
+            "긴장감"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "arbok"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\24.png"
+    },
+    {
+        "name": "pikachu",
+        "url": "https://pokeapi.co/api/v2/pokemon/25/",
+        "ability": [
+            "정전기",
+            "피뢰침"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "pikachu"
+        ],
+        "type": [
+            "electric"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\25.png"
+    },
+    {
+        "name": "raichu",
+        "url": "https://pokeapi.co/api/v2/pokemon/26/",
+        "ability": [
+            "정전기",
+            "피뢰침"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "raichu"
+        ],
+        "type": [
+            "electric"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\26.png"
+    },
+    {
+        "name": "sandshrew",
+        "url": "https://pokeapi.co/api/v2/pokemon/27/",
+        "ability": [
+            "모래숨기",
+            "모래헤치기"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "sandshrew"
+        ],
+        "type": [
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\27.png"
+    },
+    {
+        "name": "sandslash",
+        "url": "https://pokeapi.co/api/v2/pokemon/28/",
+        "ability": [
+            "모래숨기",
+            "모래헤치기"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "sandslash"
+        ],
+        "type": [
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\28.png"
+    },
+    {
+        "name": "nidoran-f",
+        "url": "https://pokeapi.co/api/v2/pokemon/29/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidoran-f"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\29.png"
+    },
+    {
+        "name": "nidorina",
+        "url": "https://pokeapi.co/api/v2/pokemon/30/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidorina"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\30.png"
+    },
+    {
+        "name": "nidoqueen",
+        "url": "https://pokeapi.co/api/v2/pokemon/31/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "우격다짐"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidoqueen"
+        ],
+        "type": [
+            "poison",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\31.png"
+    },
+    {
+        "name": "nidoran-m",
+        "url": "https://pokeapi.co/api/v2/pokemon/32/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidoran-m"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\32.png"
+    },
+    {
+        "name": "nidorino",
+        "url": "https://pokeapi.co/api/v2/pokemon/33/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "의욕"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidorino"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\33.png"
+    },
+    {
+        "name": "nidoking",
+        "url": "https://pokeapi.co/api/v2/pokemon/34/",
+        "ability": [
+            "독가시",
+            "투쟁심",
+            "우격다짐"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "nidoking"
+        ],
+        "type": [
+            "poison",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\34.png"
+    },
+    {
+        "name": "clefairy",
+        "url": "https://pokeapi.co/api/v2/pokemon/35/",
+        "ability": [
+            "헤롱헤롱바디",
+            "매직가드",
+            "프렌드가드"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "clefairy"
+        ],
+        "type": [
+            "fairy"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\35.png"
+    },
+    {
+        "name": "clefable",
+        "url": "https://pokeapi.co/api/v2/pokemon/36/",
+        "ability": [
+            "헤롱헤롱바디",
+            "매직가드",
+            "천진"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "clefable"
+        ],
+        "type": [
+            "fairy"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\36.png"
+    },
+    {
+        "name": "vulpix",
+        "url": "https://pokeapi.co/api/v2/pokemon/37/",
+        "ability": [
+            "타오르는불꽃",
+            "가뭄"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "vulpix"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\37.png"
+    },
+    {
+        "name": "ninetales",
+        "url": "https://pokeapi.co/api/v2/pokemon/38/",
+        "ability": [
+            "타오르는불꽃",
+            "가뭄"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "ninetales"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\38.png"
+    },
+    {
+        "name": "jigglypuff",
+        "url": "https://pokeapi.co/api/v2/pokemon/39/",
+        "ability": [
+            "헤롱헤롱바디",
+            "승기",
+            "프렌드가드"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "jigglypuff"
+        ],
+        "type": [
+            "normal",
+            "fairy"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\39.png"
+    },
+    {
+        "name": "wigglytuff",
+        "url": "https://pokeapi.co/api/v2/pokemon/40/",
+        "ability": [
+            "헤롱헤롱바디",
+            "승기",
+            "통찰"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "wigglytuff"
+        ],
+        "type": [
+            "normal",
+            "fairy"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\40.png"
+    },
+    {
+        "name": "zubat",
+        "url": "https://pokeapi.co/api/v2/pokemon/41/",
+        "ability": [
+            "정신력",
+            "틈새포착"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "zubat"
+        ],
+        "type": [
+            "poison",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\41.png"
+    },
+    {
+        "name": "golbat",
+        "url": "https://pokeapi.co/api/v2/pokemon/42/",
+        "ability": [
+            "정신력",
+            "틈새포착"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "golbat"
+        ],
+        "type": [
+            "poison",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\42.png"
+    },
+    {
+        "name": "oddish",
+        "url": "https://pokeapi.co/api/v2/pokemon/43/",
+        "ability": [
+            "엽록소",
+            "도주"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "oddish"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\43.png"
+    },
+    {
+        "name": "gloom",
+        "url": "https://pokeapi.co/api/v2/pokemon/44/",
+        "ability": [
+            "엽록소",
+            "악취"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "gloom"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\44.png"
+    },
+    {
+        "name": "vileplume",
+        "url": "https://pokeapi.co/api/v2/pokemon/45/",
+        "ability": [
+            "엽록소",
+            "포자"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "vileplume"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\45.png"
+    },
+    {
+        "name": "paras",
+        "url": "https://pokeapi.co/api/v2/pokemon/46/",
+        "ability": [
+            "포자",
+            "건조피부",
+            "습기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "paras"
+        ],
+        "type": [
+            "bug",
+            "grass"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\46.png"
+    },
+    {
+        "name": "parasect",
+        "url": "https://pokeapi.co/api/v2/pokemon/47/",
+        "ability": [
+            "포자",
+            "건조피부",
+            "습기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "parasect"
+        ],
+        "type": [
+            "bug",
+            "grass"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\47.png"
+    },
+    {
+        "name": "venonat",
+        "url": "https://pokeapi.co/api/v2/pokemon/48/",
+        "ability": [
+            "복안",
+            "색안경",
+            "도주"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "venonat"
+        ],
+        "type": [
+            "bug",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\48.png"
+    },
+    {
+        "name": "venomoth",
+        "url": "https://pokeapi.co/api/v2/pokemon/49/",
+        "ability": [
+            "인분",
+            "색안경",
+            "미라클스킨"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "venomoth"
+        ],
+        "type": [
+            "bug",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\49.png"
+    },
+    {
+        "name": "diglett",
+        "url": "https://pokeapi.co/api/v2/pokemon/50/",
+        "ability": [
+            "모래숨기",
+            "개미지옥",
+            "모래의힘"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "diglett"
+        ],
+        "type": [
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\50.png"
+    },
+    {
+        "name": "dugtrio",
+        "url": "https://pokeapi.co/api/v2/pokemon/51/",
+        "ability": [
+            "모래숨기",
+            "개미지옥",
+            "모래의힘"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "dugtrio"
+        ],
+        "type": [
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\51.png"
+    },
+    {
+        "name": "meowth",
+        "url": "https://pokeapi.co/api/v2/pokemon/52/",
+        "ability": [
+            "픽업",
+            "테크니션",
+            "긴장감"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "meowth"
+        ],
+        "type": [
+            "normal"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\52.png"
+    },
+    {
+        "name": "persian",
+        "url": "https://pokeapi.co/api/v2/pokemon/53/",
+        "ability": [
+            "유연",
+            "테크니션",
+            "긴장감"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "persian"
+        ],
+        "type": [
+            "normal"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\53.png"
+    },
+    {
+        "name": "psyduck",
+        "url": "https://pokeapi.co/api/v2/pokemon/54/",
+        "ability": [
+            "습기",
+            "날씨부정",
+            "쓱쓱"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "psyduck"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\54.png"
+    },
+    {
+        "name": "golduck",
+        "url": "https://pokeapi.co/api/v2/pokemon/55/",
+        "ability": [
+            "습기",
+            "날씨부정",
+            "쓱쓱"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "golduck"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\55.png"
+    },
+    {
+        "name": "mankey",
+        "url": "https://pokeapi.co/api/v2/pokemon/56/",
+        "ability": [
+            "의기양양",
+            "분노의경혈",
+            "오기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "mankey"
+        ],
+        "type": [
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\56.png"
+    },
+    {
+        "name": "primeape",
+        "url": "https://pokeapi.co/api/v2/pokemon/57/",
+        "ability": [
+            "의기양양",
+            "분노의경혈",
+            "오기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "primeape"
+        ],
+        "type": [
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\57.png"
+    },
+    {
+        "name": "growlithe",
+        "url": "https://pokeapi.co/api/v2/pokemon/58/",
+        "ability": [
+            "위협",
+            "타오르는불꽃",
+            "정의의마음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "growlithe"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\58.png"
+    },
+    {
+        "name": "arcanine",
+        "url": "https://pokeapi.co/api/v2/pokemon/59/",
+        "ability": [
+            "위협",
+            "타오르는불꽃",
+            "정의의마음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "arcanine"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\59.png"
+    },
+    {
+        "name": "poliwag",
+        "url": "https://pokeapi.co/api/v2/pokemon/60/",
+        "ability": [
+            "저수",
+            "습기",
+            "쓱쓱"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "poliwag"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\60.png"
+    },
+    {
+        "name": "poliwhirl",
+        "url": "https://pokeapi.co/api/v2/pokemon/61/",
+        "ability": [
+            "저수",
+            "습기",
+            "쓱쓱"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "poliwhirl"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\61.png"
+    },
+    {
+        "name": "poliwrath",
+        "url": "https://pokeapi.co/api/v2/pokemon/62/",
+        "ability": [
+            "저수",
+            "습기",
+            "쓱쓱"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "poliwrath"
+        ],
+        "type": [
+            "water",
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\62.png"
+    },
+    {
+        "name": "abra",
+        "url": "https://pokeapi.co/api/v2/pokemon/63/",
+        "ability": [
+            "싱크로",
+            "정신력",
+            "매직가드"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "abra"
+        ],
+        "type": [
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\63.png"
+    },
+    {
+        "name": "kadabra",
+        "url": "https://pokeapi.co/api/v2/pokemon/64/",
+        "ability": [
+            "싱크로",
+            "정신력",
+            "매직가드"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "kadabra"
+        ],
+        "type": [
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\64.png"
+    },
+    {
+        "name": "alakazam",
+        "url": "https://pokeapi.co/api/v2/pokemon/65/",
+        "ability": [
+            "싱크로",
+            "정신력",
+            "매직가드"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "alakazam"
+        ],
+        "type": [
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\65.png"
+    },
+    {
+        "name": "machop",
+        "url": "https://pokeapi.co/api/v2/pokemon/66/",
+        "ability": [
+            "근성",
+            "노가드",
+            "불굴의마음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "machop"
+        ],
+        "type": [
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\66.png"
+    },
+    {
+        "name": "machoke",
+        "url": "https://pokeapi.co/api/v2/pokemon/67/",
+        "ability": [
+            "근성",
+            "노가드",
+            "불굴의마음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "machoke"
+        ],
+        "type": [
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\67.png"
+    },
+    {
+        "name": "machamp",
+        "url": "https://pokeapi.co/api/v2/pokemon/68/",
+        "ability": [
+            "근성",
+            "노가드",
+            "불굴의마음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "machamp"
+        ],
+        "type": [
+            "fighting"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\68.png"
+    },
+    {
+        "name": "bellsprout",
+        "url": "https://pokeapi.co/api/v2/pokemon/69/",
+        "ability": [
+            "엽록소",
+            "먹보"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "bellsprout"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\69.png"
+    },
+    {
+        "name": "weepinbell",
+        "url": "https://pokeapi.co/api/v2/pokemon/70/",
+        "ability": [
+            "엽록소",
+            "먹보"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "weepinbell"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\70.png"
+    },
+    {
+        "name": "victreebel",
+        "url": "https://pokeapi.co/api/v2/pokemon/71/",
+        "ability": [
+            "엽록소",
+            "먹보"
+        ],
+        "is_hidden": [
+            false,
+            true
+        ],
+        "form": [
+            "victreebel"
+        ],
+        "type": [
+            "grass",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\71.png"
+    },
+    {
+        "name": "tentacool",
+        "url": "https://pokeapi.co/api/v2/pokemon/72/",
+        "ability": [
+            "클리어바디",
+            "해감액",
+            "젖은접시"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "tentacool"
+        ],
+        "type": [
+            "water",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\72.png"
+    },
+    {
+        "name": "tentacruel",
+        "url": "https://pokeapi.co/api/v2/pokemon/73/",
+        "ability": [
+            "클리어바디",
+            "해감액",
+            "젖은접시"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "tentacruel"
+        ],
+        "type": [
+            "water",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\73.png"
+    },
+    {
+        "name": "geodude",
+        "url": "https://pokeapi.co/api/v2/pokemon/74/",
+        "ability": [
+            "돌머리",
+            "옹골참",
+            "모래숨기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "geodude"
+        ],
+        "type": [
+            "rock",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\74.png"
+    },
+    {
+        "name": "graveler",
+        "url": "https://pokeapi.co/api/v2/pokemon/75/",
+        "ability": [
+            "돌머리",
+            "옹골참",
+            "모래숨기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "graveler"
+        ],
+        "type": [
+            "rock",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\75.png"
+    },
+    {
+        "name": "golem",
+        "url": "https://pokeapi.co/api/v2/pokemon/76/",
+        "ability": [
+            "돌머리",
+            "옹골참",
+            "모래숨기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "golem"
+        ],
+        "type": [
+            "rock",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\76.png"
+    },
+    {
+        "name": "ponyta",
+        "url": "https://pokeapi.co/api/v2/pokemon/77/",
+        "ability": [
+            "도주",
+            "타오르는불꽃",
+            "불꽃몸"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "ponyta"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\77.png"
+    },
+    {
+        "name": "rapidash",
+        "url": "https://pokeapi.co/api/v2/pokemon/78/",
+        "ability": [
+            "도주",
+            "타오르는불꽃",
+            "불꽃몸"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "rapidash"
+        ],
+        "type": [
+            "fire"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\78.png"
+    },
+    {
+        "name": "slowpoke",
+        "url": "https://pokeapi.co/api/v2/pokemon/79/",
+        "ability": [
+            "둔감",
+            "마이페이스",
+            "재생력"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "slowpoke"
+        ],
+        "type": [
+            "water",
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\79.png"
+    },
+    {
+        "name": "slowbro",
+        "url": "https://pokeapi.co/api/v2/pokemon/80/",
+        "ability": [
+            "둔감",
+            "마이페이스",
+            "재생력"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "slowbro"
+        ],
+        "type": [
+            "water",
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\80.png"
+    },
+    {
+        "name": "magnemite",
+        "url": "https://pokeapi.co/api/v2/pokemon/81/",
+        "ability": [
+            "자력",
+            "옹골참",
+            "애널라이즈"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "magnemite"
+        ],
+        "type": [
+            "electric",
+            "steel"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\81.png"
+    },
+    {
+        "name": "magneton",
+        "url": "https://pokeapi.co/api/v2/pokemon/82/",
+        "ability": [
+            "자력",
+            "옹골참",
+            "애널라이즈"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "magneton"
+        ],
+        "type": [
+            "electric",
+            "steel"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\82.png"
+    },
+    {
+        "name": "farfetchd",
+        "url": "https://pokeapi.co/api/v2/pokemon/83/",
+        "ability": [
+            "날카로운눈",
+            "정신력",
+            "오기"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "farfetchd"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\83.png"
+    },
+    {
+        "name": "doduo",
+        "url": "https://pokeapi.co/api/v2/pokemon/84/",
+        "ability": [
+            "도주",
+            "일찍기상",
+            "갈지자걸음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "doduo"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\84.png"
+    },
+    {
+        "name": "dodrio",
+        "url": "https://pokeapi.co/api/v2/pokemon/85/",
+        "ability": [
+            "도주",
+            "일찍기상",
+            "갈지자걸음"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "dodrio"
+        ],
+        "type": [
+            "normal",
+            "flying"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\85.png"
+    },
+    {
+        "name": "seel",
+        "url": "https://pokeapi.co/api/v2/pokemon/86/",
+        "ability": [
+            "두꺼운지방",
+            "촉촉바디",
+            "아이스바디"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "seel"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\86.png"
+    },
+    {
+        "name": "dewgong",
+        "url": "https://pokeapi.co/api/v2/pokemon/87/",
+        "ability": [
+            "두꺼운지방",
+            "촉촉바디",
+            "아이스바디"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "dewgong"
+        ],
+        "type": [
+            "water",
+            "ice"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\87.png"
+    },
+    {
+        "name": "grimer",
+        "url": "https://pokeapi.co/api/v2/pokemon/88/",
+        "ability": [
+            "악취",
+            "점착",
+            "독수"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "grimer"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\88.png"
+    },
+    {
+        "name": "muk",
+        "url": "https://pokeapi.co/api/v2/pokemon/89/",
+        "ability": [
+            "악취",
+            "점착",
+            "독수"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "muk"
+        ],
+        "type": [
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\89.png"
+    },
+    {
+        "name": "shellder",
+        "url": "https://pokeapi.co/api/v2/pokemon/90/",
+        "ability": [
+            "조가비갑옷",
+            "스킬링크",
+            "방진"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "shellder"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\90.png"
+    },
+    {
+        "name": "cloyster",
+        "url": "https://pokeapi.co/api/v2/pokemon/91/",
+        "ability": [
+            "조가비갑옷",
+            "스킬링크",
+            "방진"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "cloyster"
+        ],
+        "type": [
+            "water",
+            "ice"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\91.png"
+    },
+    {
+        "name": "gastly",
+        "url": "https://pokeapi.co/api/v2/pokemon/92/",
+        "ability": [
+            "부유"
+        ],
+        "is_hidden": [
+            false
+        ],
+        "form": [
+            "gastly"
+        ],
+        "type": [
+            "ghost",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\92.png"
+    },
+    {
+        "name": "haunter",
+        "url": "https://pokeapi.co/api/v2/pokemon/93/",
+        "ability": [
+            "부유"
+        ],
+        "is_hidden": [
+            false
+        ],
+        "form": [
+            "haunter"
+        ],
+        "type": [
+            "ghost",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\93.png"
+    },
+    {
+        "name": "gengar",
+        "url": "https://pokeapi.co/api/v2/pokemon/94/",
+        "ability": [
+            "저주받은바디"
+        ],
+        "is_hidden": [
+            false
+        ],
+        "form": [
+            "gengar"
+        ],
+        "type": [
+            "ghost",
+            "poison"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\94.png"
+    },
+    {
+        "name": "onix",
+        "url": "https://pokeapi.co/api/v2/pokemon/95/",
+        "ability": [
+            "돌머리",
+            "옹골참",
+            "깨어진갑옷"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "onix"
+        ],
+        "type": [
+            "rock",
+            "ground"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\95.png"
+    },
+    {
+        "name": "drowzee",
+        "url": "https://pokeapi.co/api/v2/pokemon/96/",
+        "ability": [
+            "불면",
+            "예지몽",
+            "정신력"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "drowzee"
+        ],
+        "type": [
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\96.png"
+    },
+    {
+        "name": "hypno",
+        "url": "https://pokeapi.co/api/v2/pokemon/97/",
+        "ability": [
+            "불면",
+            "예지몽",
+            "정신력"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "hypno"
+        ],
+        "type": [
+            "psychic"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\97.png"
+    },
+    {
+        "name": "krabby",
+        "url": "https://pokeapi.co/api/v2/pokemon/98/",
+        "ability": [
+            "괴력집게",
+            "조가비갑옷",
+            "우격다짐"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "krabby"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\98.png"
+    },
+    {
+        "name": "kingler",
+        "url": "https://pokeapi.co/api/v2/pokemon/99/",
+        "ability": [
+            "괴력집게",
+            "조가비갑옷",
+            "우격다짐"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "kingler"
+        ],
+        "type": [
+            "water"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\99.png"
+    },
+    {
+        "name": "voltorb",
+        "url": "https://pokeapi.co/api/v2/pokemon/100/",
+        "ability": [
+            "방음",
+            "정전기",
+            "유폭"
+        ],
+        "is_hidden": [
+            false,
+            false,
+            true
+        ],
+        "form": [
+            "voltorb"
+        ],
+        "type": [
+            "electric"
+        ],
+        "sprite": "C:\\Users\\NT551XCJ\\Desktop\\start_backend\\Project\\Duckemon\\cacheFile\\sprite\\pokemon\\100.png"
+    }
+]
