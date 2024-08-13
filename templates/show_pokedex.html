@@ -6,58 +6,162 @@
     <title>포켓몬 도감</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #3c5aa6;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .pokemon-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
         .pokemon-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             margin: 10px;
             text-align: center;
             width: 150px;
+            transition: transform 0.3s ease;
+        }
+        .pokemon-card:hover {
+            transform: translateY(-5px);
         }
         .pokemon-card img {
             width: 120px;
             height: 120px;
             object-fit: contain;
+            padding: 10px;
         }
+        .pokemon-card p {
+            margin: 10px 0;
+            color: #333;
+        }
+        .pokemon-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .pagination {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         .pagination a {
             margin: 0 5px;
             text-decoration: none;
-            color: blue;
+            color: #3c5aa6;
+            padding: 5px 10px;
+            border: 1px solid #3c5aa6;
+            border-radius: 5px;
+        }
+        .pagination a:hover {
+            background-color: #3c5aa6;
+            color: white;
+        }
+        .pagination strong {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #3c5aa6;
+            color: white;
+            border-radius: 5px;
+        }
+        .home-button {
+            margin-left: 15px;
+            text-decoration: none;
+            color: white;
+            background-color: white;
+
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #3c5aa6;
+        }
+        .home-button:hover {
+            background-color: white;
+            color: #3c5aa6;
         }
     </style>
 </head>
 <body>
-    {% for pokemon in pokemons %}
-    <div class="pokemon-card">
-        <a href="{{ url_for('main.pokedex_detail', pokemon_name=pokemon.name) }}">
-            <img src="{{ url_for('main.get_pokemon_sprite', filename=pokemon.name) }}" alt="{{ pokemon.name }}">
-            <p>{{ pokemon.name }}</p>
-        </a>
-    </div>
-    {% endfor %}
+    <div class="container">
+        <h1>포켓몬 도감</h1>
+        <div class="pokemon-list">
+            {% for pokemon in pokemons %}
+            <div class="pokemon-card">
+                <a href="{{ url_for('main.pokedex_detail', pokemon_name=pokemon.name) }}">
+                    <img src="{{ url_for('main.get_pokemon_sprite', filename=pokemon.name) }}" alt="{{ pokemon.name }}">
+                    <p>{{ pokemon.name }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
 
-    <!-- 페이징 네비게이션 -->
-    <div class="pagination">
-        {% if page > 1 %}
-            <a href="{{ url_for('main.pokedex_home', page=page-1) }}">&laquo; Previous</a>
-        {% endif %}
-        {% for p in range(1, total_pages + 1) %}
-            {% if p == page %}
-                <strong>{{ p }}</strong>
-            {% else %}
-                <a href="{{ url_for('main.pokedex_home', page=p) }}">{{ p }}</a>
-            {% endif %}
-        {% endfor %}
-        {% if page < total_pages %}
-            <a href="{{ url_for('main.pokedex_home', page=page + 1 ) }}">Next &raquo;</a>
-        {% endif %}
+        <!-- 페이징 네비게이션 -->
+{#        <div class="pagination">#}
+{#            {% if page > 1 %}#}
+{#                <a href="{{ url_for('main.pokedex_home', page=page-1) }}">&laquo; 이전</a>#}
+{#            {% endif %}#}
+{#            {% for p in range(1, total_pages + 1) %}#}
+{#                {% if p == page %}#}
+{#                    <strong>{{ p }}</strong>#}
+{#                {% else %}#}
+{#                    <a href="{{ url_for('main.pokedex_home', page=p) }}">{{ p }}</a>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            {% if page < total_pages %}#}
+{#                <a href="{{ url_for('main.pokedex_home', page=page + 1 ) }}">다음 &raquo;</a>#}
+{#            {% endif %}#}
+{#        </div>#}
+        <div class="pagination">
+                {% if page > 1 %}
+                    <a href="{{ url_for('main.pokedex_home', page=page-1) }}">&laquo; 이전</a>
+                {% endif %}
+
+                {% set window_size = 5 %}
+                {% set window_start = [page - window_size//2, 1] | max %}
+                {% set window_end = [window_start + window_size, total_pages + 1] | min %}
+
+                {% if window_start > 1 %}
+                    <a href="{{ url_for('main.pokedex_home', page=1) }}">1</a>
+                    {% if window_start > 2 %}
+                        <span class="pagination-ellipsis">...</span>
+                    {% endif %}
+                {% endif %}
+
+                {% for p in range(window_start, window_end) %}
+                    {% if p == page %}
+                        <strong>{{ p }}</strong>
+                    {% else %}
+                        <a href="{{ url_for('main.pokedex_home', page=p) }}">{{ p }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if window_end <= total_pages %}
+                    {% if window_end < total_pages %}
+                        <span class="pagination-ellipsis">...</span>
+                    {% endif %}
+                    <a href="{{ url_for('main.pokedex_home', page=total_pages) }}">{{ total_pages }}</a>
+                {% endif %}
+
+                {% if page < total_pages %}
+                    <a href="{{ url_for('main.pokedex_home', page=page + 1 ) }}">다음 &raquo;</a>
+                {% endif %}
+                <!-- Home Button -->
+                <a href="{{ url_for('main.home') }}" class="home-button">홈으로</a>
+            </div>
     </div>
 </body>
 </html>

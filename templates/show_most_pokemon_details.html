@@ -3,58 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>현재 포켓몬: {{ pokemon_name }} -> 상세 정보: {{ detail_name }} </title>
+    <title>현재 포켓몬: {{ pokemon_name }} -> 상세 정보: {{ detail_name }}</title>
     <style>
-        table {
-            border-collapse: collapse;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
             width: 100%;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            color: #3c5aa6;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid #dddddd;
+            text-align: center;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+        td {
+            background-color: #fafafa;
+            color: #555;
+        }
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3c5aa6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #2e458b;
         }
     </style>
 </head>
 <body>
-    <h1>{{ pokemon_name }} 포켓몬 -{{ detail_name }} 상세 정보</h1>
+    <div class="container">
+        <h1>{{ pokemon_name }} 포켓몬 - {{ detail_name }} 상세 정보</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>순위</th>
-                <th>ID</th>
-                <th>이름</th>
+        <table>
+            <thead>
+                <tr>
+                    <th>순위</th>
+                    <th>ID</th>
+                    <th>이름</th>
+                    {% if '포켓몬' in detail_name %}
+                        <th>타입</th>
+                    {% else %}
+                        <th>빈도</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for pokemon in details %}
+                <tr>
+                    <td>{{ pokemon.index }}</td>
+                    <td>{{ pokemon.id }}</td>
+                    <td>{{ pokemon.name }}</td>
+                    {% if '포켓몬' in detail_name %}
+                        <td>{{ pokemon.type_kor }}</td>
+                    {% else %}
+                        <td>{{ pokemon.val }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-                {% if '포켓몬' in detail_name %}
-                <th>타입</th>
-                {% else %}
-                <th>빈도</th>
-                {% endif %}
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for pokemon in details %}
-            <tr>
-                <td>{{ pokemon.index }}</td>
-                <td>{{ pokemon.id }}</td>
-                <td>{{ pokemon.name }}</td>
-                {% if '포켓몬' in detail_name %}
-                <td>{{ pokemon.type_kor }}</td>
-
-                {% else %}
-                <td>{{ pokemon.val }}</td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="{{ url_for('main.most_pokemon') }}">다른 포켓몬 검색하기</a>
-
+        <a href="{{ url_for('main.most_pokemon') }}">다른 포켓몬 검색하기</a>
+    </div>
 </body>
 </html>
