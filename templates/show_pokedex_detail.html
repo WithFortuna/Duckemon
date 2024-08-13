@@ -6,46 +6,120 @@
     <title>{{ pokemon.name }} 상세 정보</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
-        img {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #3c5aa6;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .pokemon-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .pokemon-image img {
             width: 200px;
             height: 200px;
             object-fit: contain;
         }
+        .info-section {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .info-section h2 {
+            color: #3c5aa6;
+            margin-top: 0;
+            border-bottom: 2px solid #3c5aa6;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: white;
+            border-radius: 3px;
+        }
+        .back-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #3c5aa6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #2a4078;
+        }
     </style>
 </head>
 <body>
-    <h1>{{ pokemon.name }}</h1>
-    <img src="{{ url_for('main.get_pokemon_sprite', filename = pokemon.name) }}" alt="{{ pokemon.name }}">
+    <div class="container">
+        <h1>{{ pokemon.name }}</h1>
+        <div class="pokemon-image">
+            <img src="{{ url_for('main.get_pokemon_sprite', filename=pokemon.name) }}" alt="{{ pokemon.name }}">
+        </div>
 
-    <h2>능력</h2>
-    <ul>
-        {% for ability in pokemon.ability %}
-        <li>{{ ability }}</li>
-        {% endfor %}
-    </ul>
-    <h2>숨겨진 능력</h2>
-    <ul>
-        {% for is_hidden in pokemon.is_hidden %}
-        <li>{{ "예" if is_hidden else "아니오" }}</li>
-        {% endfor %}
-    </ul>
-    <h2>형태</h2>
-    <ul>
-        {% for form in pokemon.form %}
-        <li>{{ form }}</li>
-        {% endfor %}
-    </ul>
-    <h2>타입</h2>
-    <ul>
-        {% for type in pokemon.type %}
-        <li>{{ type }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('main.home') }}">돌아가기</a>
+        <div class="info-section">
+            <h2>능력</h2>
+            <ul>
+                {% for ability in pokemon.ability %}
+                <li>{{ ability }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>숨겨진 능력</h2>
+            <ul>
+                {% for is_hidden in pokemon.is_hidden %}
+                <li>{{ "예" if is_hidden else "아니오" }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>형태</h2>
+            <ul>
+                {% for form in pokemon.form %}
+                <li>{{ form }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>타입</h2>
+            <ul>
+                {% for type in pokemon.type %}
+                <li>{{ type }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{{ url_for('main.pokedex_home') }}" class="back-button">돌아가기</a>
+    </div>
 </body>
 </html>

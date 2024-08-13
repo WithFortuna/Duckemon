@@ -13,6 +13,19 @@ match = {싱글 또는 더블} //양자택일
 
 ts1, ts2: UNIX 타임스탬프이며 년월일로 변환 가능
 
+<기능>
+
+-pokeAPI서 데이터 load 후 cache파일에 save
+:멀티 스레딩 사용
+-pokebase라이브러리 수정
+:멀티스레딩으로 인한 portalocker의 lock기능 필요
+따라서 깃허브에 업로드 필요.
+-로컬 이미지 파일 전송 기능
+-다량의 이미지 파일 처리: 페이지 도입
+-캐시파일과 별개로 모든 포켓몬 정보를 .json으로 저장
+:pokemons_ver2.json파일
+-추후 pokeAPI서 포켓몬 등록&업데이트 시 로컬저장파일 동기화를 위한 CICD class
+-------------------------------------------------------------------
 <배운점>
 
 - Python에서 JSON 파일을 읽고 쓰는 데 사용하는 json 모듈을 사용하면, 
@@ -83,6 +96,19 @@ def load(endpoint, resource_id=None, subresource=None):
             print(f"파일 잠겨서 대기중... endpoint: {endpoint}, id:{resource_id}")
             time.sleep(1)
 ----------------------------------------------------------------------
+-웹서버는 서버를 열은 pc의 로컬파일에도 접근할 수 없다. 따라서 Flask에서 제공하는 함수로 경로를 열어줘야한다.
+
+-모든 포켓몬을 보여줄 수 없어서 flask-pagination적용
+
+Q. jinja2템플릿 엔진만으로 동적페이지를 잘 구성한거같은데 javaScript는 왜필요한가?
+=> 해당 url이 클라이언트에게 도착한 이후에 발생하는 화면 부분업데이트가 생길 때, 필요하다.
+
+
+
+
+
+
+
 
 skills = [ {스킬}{스킬}{스킬}{스킬}{스킬} ]
 abilities = [     {특성}{특성}{특성}   ] 
@@ -105,7 +131,10 @@ reponse 형식:
 pokemon/other/official-artwork/shiny/11.png
 **kwargs = { "other": {"official-artwork": {"front_shiny": true }}}
 
+C:\Users\NT551XCJ\Desktop\start_backend\Project\Duckemon\cacheFile\sprite\pokemon\57.png
 
+growlithe
+growlithe, C
 
 
   
