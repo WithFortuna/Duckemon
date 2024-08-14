@@ -8,6 +8,7 @@ from app.constants import *
 import pokebase, pokebase.api, pokebase.loaders #pokeAPI의 wrapper라이브러리. pokebase/api.py - get_data, get_sprite
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import app.pokemon_svm as pokemon_svm
 
 main = Blueprint('main', __name__)
 POKE_API_URL = 'https://pokeapi.co/api/v2/{endpoint}/{id}'
@@ -451,3 +452,21 @@ def init_pokedex_enhanced(start, end):
         print("업데이트할 내용이 없습니다.")
         print("old_pokemons: ", old_pokemons)
 
+#==========================================================================================================기계학습 추천 포켓몬
+
+@main.route('/pokemon/ai', methods=['GET', 'POST'])
+def ai_recommendation_form():
+    if request.method == 'POST':
+        #유저입력 데이터
+        user_input=request.form['types']
+        print(f'유저입력완료, 입력: {user_input}')
+        return redirect(url_for('main.ai_recommendation', user_input=user_input ) )
+
+    return render_template('ai_pokemon_form.html')
+
+@main.route('/pokemon/ai/results')
+def ai_recommendation(): #ai 추천결과를 새로운 url로 띄우지만 그것보다는 하나의 페이지에서 변화만 보여주는 방식이 좋아보임
+    user_input = request.args.get('user_input')
+    recommendation = pokemon_svm.ai_recommend_pokemon(user_input)
+    print('=========redirect성공')
+    return render_template('ai_pokemon_result.html', recommendation = recommendation)
