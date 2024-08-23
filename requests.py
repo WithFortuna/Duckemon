@@ -31,7 +31,7 @@ def get_seasons():
     }
     
     data = {
-        "soft": "Sv" #9세대
+        "soft": "Sc" #스칼렛
     }
     response = requests.post(URL_SEASONS, headers={**headers, **extra_headers}, json=data)
     if response.status_code != 200:
