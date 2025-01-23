@@ -20,7 +20,7 @@ ts1, ts2: UNIX 타임스탬프이며 년월일로 변환 가능
 -pokebase라이브러리 수정
 :멀티스레딩으로 인한 portalocker의 lock기능 필요
 따라서 깃허브에 업로드 필요.
--로컬 이미지 파일 전송 기능
+-대량의 이미지 파일을 브라우저로 동시 전송하기 위해 로컬 파일에 캐싱함. //확장성을 고려한다면 CDN+aws s3로 마이그레이션 필요
 -다량의 이미지 파일 처리: 페이지 도입
 -캐시파일과 별개로 모든 포켓몬 정보를 .json으로 저장
 :pokemons_ver2.json파일
@@ -63,7 +63,7 @@ dir(객체) 또는 객체.__dir__ 또는 객체.__dict__
 
 -외부서버에서 데이터를 다량 요청해야하는 상황. 요청 수가 많아서 인터넷을 많이 타다보니
 속도가 매우 느림
-=> 멀티스레딩으로 요청을 동시에 처리 & api요청을 묶어서 보내기(비동기 api)
+=> 멀티스레딩으로 요청을 동시에 처리 & api요청을 묶어서 보내기(비동기 api) //비동기 처리는 스레드를 생성하지 않고도 동시에 여러 작업을 수행할 수 있어, I/O 작업에 특히 적합합니다.
 # 멀티스레딩을 사용하여 병렬 처리
     with ThreadPoolExecutor(max_workers=10) as executor:  # max_workers를 조정하여 동시 요청 수 제한
         future_to_pokemon = {executor.submit(process_pokemon, pokemons[k]): k for k in range(start, end)}
@@ -95,6 +95,27 @@ def load(endpoint, resource_id=None, subresource=None):
         except portalocker.exceptions.AlreadyLocked:
             print(f"파일 잠겨서 대기중... endpoint: {endpoint}, id:{resource_id}")
             time.sleep(1)
+//동기화 기법
+동기화 기법
+뮤텍스 (Mutex, Mutual Exclusion)
+
+한 번에 하나의 스레드만 공유 자원에 접근할 수 있도록 제한.
+예: pthread_mutex_lock / pthread_mutex_unlock
+세마포어 (Semaphore)
+
+한정된 자원에 대해 일정 개수의 동시 접근만 허용.
+예: sem_wait / sem_post
+모니터 (Monitor)
+
+뮤텍스와 조건 변수(Condition Variable)를 조합하여 공유 자원을 안전하게 관리.
+락 (Lock)
+
+자원을 잠그고 해제하는 방식으로 동기화.
+예: Java의 synchronized, Python의 threading.Lock.
+원자적 연산 (Atomic Operation)
+
+연산 자체가 분할되지 않고, 중단 없이 실행되도록 보장.
+예: Compare-And-Swap (CAS), AtomicInteger.
 ----------------------------------------------------------------------
 -웹서버는 서버를 열은 pc의 로컬파일에도 접근할 수 없다. 따라서 Flask에서 제공하는 함수로 경로를 열어줘야한다.
 
